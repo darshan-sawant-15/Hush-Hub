@@ -1,0 +1,152 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.bg-custom {
+  background: #3aafa9;
+}
+
+.navbar-brand {
+  font-family: sans-serif;
+  font-size: 25px;
+}
+
+.navbar .nav-item .nav-link {
+  font-size: 20px;
+  color: white;
+  margin-right: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.navbar .nav-item:hover .nav-link {
+  background-color: #2b7a78;
+  color: white;
+  border-radius: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.btn-color {
+  background-color: #17252a;
+  color: white;
+}
+
+.btn-color:hover {
+  background-color: #17252a;
+  color: white;
+}
+
+/*common for all body*/
+body {
+  background-color: #def2f1;
+  overflow-x: hidden;
+}
+
+/*button color*/
+.btn-custom {
+  background-color: #17252a !important;
+  color: white !important;
+}
+
+.btn-custom:hover {
+  background-color: #000 !important;
+  color: white, impor !important;
+}
+
+/*index page*/
+.banner {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(66, 166, 161, .8), rgba(66, 166, 161, .8)), url('../images/homepagebg.jpg');
+  color: white;
+  background-size: cover;
+}
+
+/*signup page*/
+.p-conf {
+  width: calc(100% -22px);
+  border: 2px solid green;
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin: 10px 0px;
+  background-color: rgba(0, 249, 12, 0.5);
+  display: none;
+}
+
+.n-conf {
+  width: calc(100% -22px);
+  border: 2px solid red;
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin: 10px 0px;
+  background-color: rgba(255, 0, 0, 0.5);
+  display: none;
+}
+
+/*for all number input*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*for all cards*/
+.card {
+  background-color: #feffff;
+}
+
+
+
+/*add post page*/
+/* #caption {
+  height: 200px;
+} */
+
+/*edit post form image*/
+#edit-post-img {
+  max-width: 100%;
+  max-height: 300px;
+  border: 1px solid #2b7a78;
+  border-radius: 2px;
+}
+
+/*edit profile picture*/
+#edit-profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #17252A;
+}
+
+/*user-notifications*/
+input[readonly] {
+  color: black;
+}
+
+.custom-input-container .custom-input {
+  width: 100%;
+}
+
+.btn-notif {
+  background-color: #def2f1;
+  color: #17252a;
+  border: 1px solid #2b7a78;
+}
+
+.card-title a {
+  color: #2b7a78 !important;
+}
+
+.card-title a:hover {
+  text-decoration: none;
+  color: #2b7a78 !important;
+}
+
+/*like count when style*/
+#like-count[onclick]{
+  color: orangered!important;
+}
