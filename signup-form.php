@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 
@@ -6,11 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <?php include "header.php"; ?>
+    <?php include "header.php";?>
 </head>
 
 <body>
-    <?php include "base.php"; ?>
+    <?php include "base.php";?>
     <div>
         <div class="row p-4">
             <div class="col-md-4 offset-md-4">
@@ -20,18 +20,18 @@
                             <i class="fa-solid fa-user-plus fa-2x"></i>
                             <h4>Registration</h4>
                         </div>
-                        <?php if (isset($_SESSION['successMessage'])) { ?>
+                        <?php if (isset($_SESSION['successMessage'])) {?>
                             <div class="alert alert-success text-center">
                                 <?php echo $_SESSION['successMessage'];
-                                unset($_SESSION["successMessage"]); ?>
+    unset($_SESSION["successMessage"]); ?>
                             </div>
-                        <?php } ?>
-                        <?php if (isset($_SESSION['errorMessage'])) { ?>
+                        <?php }?>
+                        <?php if (isset($_SESSION['errorMessage'])) {?>
                             <div class="alert alert-danger text-center">
                                 <?php echo $_SESSION['errorMessage'];
-                                unset($_SESSION["errorMessage"]); ?>
+    unset($_SESSION["errorMessage"]); ?>
                             </div>
-                        <?php } ?>
+                        <?php }?>
                         <form action="handlers/signup-handler.php" method="post" onsubmit="return validate()">
                             <div class="form-group">
                                 <label for="fname">Full Name</label>
@@ -88,13 +88,17 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label> <input type="password"
                                     class="form-control" id="password" name="password" required
-                                    pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
+                                    pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*\-]).{8,}$"
                                     title="Minimum eight characters, at least one upper case English letter, one lower case English letter, one number and one special character"
                                     minlength="8" maxlength="128">
+                                    <label class="mt-2">Show Password:</label>
+                                    <input type="checkbox" id="showPassword" class="ml-1" onchange="togglePasswordVisibility(this)" />
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Confirm Password</label> <input required
                                     type="password" class="form-control" id="cpassword" name="cpassword">
+                                    <label class="mt-2">Show Password:</label>
+                                    <input type="checkbox" id="showCPassword" class="ml-1" onchange="togglePasswordVisibility(this)" />
                             </div>
                             <br>
                             <button type="submit" id="submitbtn" class="btn badge-pill btn-block btn-custom" disabled

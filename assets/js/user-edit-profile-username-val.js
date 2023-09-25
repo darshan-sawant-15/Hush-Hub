@@ -51,6 +51,24 @@ function checkIfNoProfilePicture() {
   }
 }
 
+function togglePasswordVisibility(checkbox) {
+  var passwordInput;
+  if (checkbox.id === "showCPassword") {
+    passwordInput = document.getElementById("cpassword");
+    console.log("Reaching");
+  } else if (checkbox.id === "showNPassword") {
+    passwordInput = document.getElementById("npassword");
+  } else if (checkbox.id === "showCCPassword") {
+    passwordInput = document.getElementById("ccpassword");
+  }
+
+  if (checkbox.checked) {
+    passwordInput.type = "text";
+  } else {
+    passwordInput.type = "password";
+  }
+}
+
 var currUname = document.getElementById("uname").value;
 
 unameInput = document.getElementById("uname");

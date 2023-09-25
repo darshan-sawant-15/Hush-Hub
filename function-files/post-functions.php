@@ -53,6 +53,23 @@ function getCaptionFromPostId($postId)
     return $caption; // Return the caption value
 }
 
+function getUserIdFromPostId($postId)
+{
+    include "connection.php";
+
+    $sql = "SELECT user_id FROM post WHERE id = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $postId);
+
+    $stmt->execute();
+    $stmt->bind_result($userId);
+
+    $stmt->fetch(); // Fetch the caption value from the database
+
+    $stmt->close();
+    return $userId; // Return the caption value
+}
 
 function getPosts($id)
 {
@@ -223,7 +240,6 @@ function givePostUI($postId)
             $html .= '</div>';
             $html .= '</div>';
 
-
             if ($post["allow_comments"] == 0) {
                 $html .= '<div class="comment-section mt-3" id="comment-section" style="display: block;">';
                 if ($post["user_id"] == $_SESSION["user_id"]) {
@@ -252,7 +268,7 @@ function givePostUI($postId)
                         $username = getUserNameFromId($comment["commenter_id"]);
                         $html .= '<a href="../user/user-view-profile.php?id=' . $comment["commenter_id"] . '"><strong>@' . $username . ': </strong></a>';
                         $html .= $comment["comment"];
-                        if ($comment["commenter_id"] == $_SESSION["user_id"]) {
+                        if ($comment["commenter_id"] == $_SESSION["user_id"] || getUserIdFromPostId($comment["post_id"]) == $_SESSION["user_id"]) {
                             $html .= '<button class="btn btn-sm btn-danger btn-pill" onclick="delComment(' . $post["id"] . ',' . $comment["id"] . ');" style="margin-left:5px;padding:2px">Delete</button>';
                         }
                         //  else {
@@ -290,7 +306,6 @@ function givePostUI($postId)
     return $html;
 }
 
-
 function giveCommentSection($postId)
 {
     include "user-functions.php";
@@ -326,7 +341,7 @@ function giveCommentSection($postId)
                     $username = getUserNameFromId($comment["commenter_id"]);
                     $html .= '<a href="../user/user-view-profile.php?id=' . $comment["commenter_id"] . '"><strong>@' . $username . ': </strong></a>';
                     $html .= $comment["comment"];
-                    if ($comment["commenter_id"] == $_SESSION["user_id"]) {
+                    if ($comment["commenter_id"] == $_SESSION["user_id"] || getUserIdFromPostId($comment["post_id"]) == $_SESSION["user_id"]) {
                         $html .= '<button class="btn btn-sm btn-danger btn-pill" onclick="delComment(' . $post["id"] . ',' . $comment["id"] . ');" style="margin-left:5px;padding:2px">Delete</button>';
                     }
                     // } else {
@@ -358,8 +373,6 @@ function giveCommentSection($postId)
     return $html;
 
 }
-
-
 
 function givePostList()
 {
@@ -470,5 +483,3 @@ if (!empty($_GET["action"])) {
     }
 }
 echo $response;
-
-?>

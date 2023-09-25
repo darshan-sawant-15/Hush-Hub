@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php session_start();
 if (!isset($_SESSION['username']) || $_SESSION['role'] != "user") {
     // Redirect to the login page or any other appropriate action
     header('Location: ../login-form.php');
@@ -11,7 +11,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != "user") {
 <head>
     <meta charset="ISO-8859-1">
     <title>Edit Profile</title>
-    <?php include "header.php"; ?>
+    <?php include "header.php";?>
 
 
 
@@ -19,7 +19,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != "user") {
 
 <body>
 
-    <?php include "base-user.php"; ?>
+    <?php include "base-user.php";?>
 
     <div>
         <div class="row p-4">
@@ -31,12 +31,12 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != "user") {
                             <h4>Edit Profile</h4>
                         </div>
 
-                        <?php if (isset($_SESSION['errorMessage'])) { ?>
+                        <?php if (isset($_SESSION['errorMessage'])) {?>
                             <div class="alert alert-danger text-center">
                                 <?php echo $_SESSION['errorMessage']; ?>
                             </div>
                             <?php unset($_SESSION["errorMessage"]);
-                        } ?>
+}?>
 
                         <form action="../handlers/user/edit-profile-handler.php" method="post"
                             enctype="multipart/form-data" onsubmit="return validate()">
@@ -88,7 +88,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != "user") {
                                     class="form-control" id="otpverify" aria-describedby="emailHelp" name="otpverify"
                                     pattern="^[0-9]{1,6}$" title="6 digit OTP"
                                     onKeyPress="if(this.value.length==6) return false;"> <br> <input
-                                    type="button btn-custom" class="btn badge-pill" value="Verify"
+                                    type="button" class="btn btn-custom badge-pill" value="Verify"
                                     onclick="codeverify()">
                                 <div class="n-conf">Incorrect OTP</div>
                             </div>
@@ -105,7 +105,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != "user") {
                                 <input type="file" name="image" id="image" class="form-control-file" accept="image/*">
 
                                 <div class="text-center mt-3" id="image-preview">
-                                    <img src="../assets/images/uploads/profile-pictures/<?= $_SESSION["profile_picture"] ?>"
+                                    <img src="../assets/images/uploads/profile-pictures/<?=$_SESSION["profile_picture"]?>"
                                         id="edit-profile-picture">
                                 </div>
                                 <div class="text-center">
@@ -137,23 +137,29 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != "user") {
 
 
                             <div id="password" style="display: none;">
-                                <input type="hidden" id="old-passhash" value="<?= $_SESSION["password"] ?>">
+                                <input type="hidden" id="old-passhash" value="<?=$_SESSION["password"]?>">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Current Password</label>
                                     <input type="password" class="form-control" id="cpassword" name="cpassword">
+                                    <label class="mt-2">Show Password:</label>
+                                    <input type="checkbox" id="showCPassword" class="ml-1" onchange="togglePasswordVisibility(this)" />
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">New Password</label> <input type="password"
                                         class="form-control" id="npassword" name="npassword"
-                                        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+                                        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*\-]).{8,}$"
                                         title="Minimum eight characters, at least one upper case English letter, one lower case English letter, one number and one special character"
                                         minlength="8" maxlength="128">
+                                        <label class="mt-2">Show Password:</label>
+                                    <input type="checkbox" id="showNPassword" class="ml-1" onchange="togglePasswordVisibility(this)" />
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Confirm Password</label>
                                     <input type="password" class="form-control" id="ccpassword" name="ccpassword"
                                         value="<?php echo $_SESSION["password"] ?>">
+                                       <label class="mt-2">Show Password:</label>
+                                    <input type="checkbox" id="showCCPassword" class="ml-1" onchange="togglePasswordVisibility(this)" />
                                 </div>
 
                             </div>

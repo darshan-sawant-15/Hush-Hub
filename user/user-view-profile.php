@@ -96,7 +96,7 @@ if ($_SESSION["user_id"] == $_GET["id"]) {
 
                 </div>
             </div>
-            <div class="col-md-9 posts-container" id="postContainer">
+            <div class="col-md-9" id="postContainer">
                 <?php
                 if ($user["privacy"] != "Public") {
                     if (!doesFollow($_SESSION["user_id"], $user["id"])) {

@@ -43,6 +43,7 @@
 body {
   background-color: #def2f1;
   overflow-x: hidden;
+  user-select: none;
 }
 
 /*button color*/

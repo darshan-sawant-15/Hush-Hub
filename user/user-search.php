@@ -23,7 +23,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != "user") {
                 <div class="card">
                     <div class="card-body mb-2">
                         <h4 class="text-center mb-3" style="color: #17252A">Search Users</h4>
-                        <form class="form-inline" action="searchUsers.php" method="get">
+                        <form class="form-inline" method="get">
                             <?php $searchTerm = "";
                             if (!empty($_GET['searchTerm'])) {
                                 $searchTerm = $_GET['searchTerm'];
@@ -55,7 +55,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] != "user") {
                                     $html .= '<div class="card mt-2">';
                                     $html .= '<div class="card-body d-flex align-items-center">';
                                     $html .= '<div class="mr-4">';
-                                    $html .= '<img src="profile_pictures/' . $user["profile_picture"] . '" class="rounded-circle" style="border: 1px solid #17252A;"
+                                    $html .= '<img src="../assets/images/uploads/profile-pictures/' . $user["profile_picture"] . '" class="rounded-circle" style="border: 1px solid #17252A;"
                                     width="75" height="75" alt="Profile Picture">';
                                     $html .= '</div>';
                                     $html .= '<div>';

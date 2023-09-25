@@ -99,6 +99,16 @@ $privacy = $_POST['privacy'];
 $opassword = $_POST["cpassword"];
 $npassword = $_POST["npassword"];
 $ccpassword = $_POST['ccpassword'];
+$password = $_POST['password'];
+
+$passwordPattern = '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/';
+if (!preg_match($passwordPattern, $npassword)) {
+    $_SESSION['errorMessage'] = "New password must contain minimum eight characters, at least one upper case English letter, one lower case English letter, one number and one special character";
+    header("Location: ../signup-form.php");
+    exit();
+}
+
+
 $hashPasswordFromSesh = $_SESSION["password"];
 
 $finalPassword = "";

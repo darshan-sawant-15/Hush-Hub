@@ -114,7 +114,7 @@ function getLikeCount(postId, liked) {
       } else {
         if (this.responseText != "0") {
           post.querySelector("#like-btn").innerHTML =
-            '<i class="fa-sharp fa-solid fa-heart" style="color: white; margin-right:10px;"></i> <span id="like-count onclick="showLikers(' +
+            '<i class="fa-sharp fa-solid fa-heart" style="color: white; margin-right:10px;"></i> <span id="like-count" onclick="showLikers(' +
             postId +
             ');">' +
             this.responseText +

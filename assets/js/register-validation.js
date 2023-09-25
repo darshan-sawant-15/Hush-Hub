@@ -18,6 +18,7 @@ function validate() {
   return true;
 }
 
+
 function checkUsername() {
   var username = unameInput.value;
   var xmlhttp = new XMLHttpRequest();
@@ -46,3 +47,21 @@ function checkUsername() {
 
 // Add an "onchange" event listener
 unameInput.addEventListener("input", checkUsername);
+
+
+function togglePasswordVisibility(checkbox) {
+  var passwordInput;
+  if (checkbox.id === "showPassword") {
+    passwordInput = document.getElementById("password");
+    console.log("Reaching");
+  } else if (checkbox.id === "showCPassword") {
+    passwordInput = document.getElementById("cpassword");
+  }
+
+  if (checkbox.checked) {
+    passwordInput.type = "text";
+  } else {
+    passwordInput.type = "password";
+  }
+}
+
